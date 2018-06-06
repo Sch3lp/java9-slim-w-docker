@@ -6,7 +6,8 @@ FROM openjdk:9.0.1-11-jre-slim-sid
 #     && mv /tmp/docker/docker /usr/bin \
 #     && rm -rf /tmp/docker-$VERSION /tmp/docker
 
-RUN apt-get update && apt-get install -y curl bash
+RUN apt-get update && apt-get install -y curl bash python python-pip
+RUN pip install --upgrade awscli==1.14.5 s3cmd==2.0.1
 
 ADD https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz /tmp
 RUN tar -xvzf /tmp/docker-latest.tgz && \
